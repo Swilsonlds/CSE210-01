@@ -21,16 +21,17 @@ namespace CSE210_01
              board.Add("8");
              board.Add("9");
              int winner = HasWinner(board);
+             DisplayBoard(board);
 
-             while (winner != 1)
+             while (winner != 1) 
              {
-                 DisplayBoard(board);
                  MakeMove(player, board);
                  winner = HasWinner(board);
                  player = NextPlayer(player);
+                 DisplayBoard(board);
              }
 
-             Console.WriteLine($"Game Over, {player}'s lose!");
+             Console.WriteLine($"Game Over, {NextPlayer(player)}'s win!");
              
         }
 
@@ -93,15 +94,16 @@ namespace CSE210_01
             }
         }
 
-        static bool IsADraw(List<string>board)
+       /* static bool IsADraw(List<string>board)
         {
             for (int i = 0; i < 10; i++)
                 if (board[i] != "x" & board[i] != "o")
                 {
                     return false;
                 }
-            return true;
-        }
+                else 
+                {return true;} 
+        } */
 
         static void MakeMove(string player, List<string> board)  
         {

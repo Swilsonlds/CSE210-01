@@ -22,16 +22,24 @@ namespace CSE210_01
              board.Add("9");
              int winner = HasWinner(board);
              DisplayBoard(board);
+             int turns = 0;
 
-             while (winner != 1) 
+             while ((winner != 1) && (turns != 9))
              {
                  MakeMove(player, board);
                  winner = HasWinner(board);
                  player = NextPlayer(player);
                  DisplayBoard(board);
+                 turns++;
              }
 
-             Console.WriteLine($"Game Over, {NextPlayer(player)}'s win!");
+             if (winner == 1)
+                Console.WriteLine($"Game Over, {NextPlayer(player)}'s win!");
+
+             else 
+             {
+                 Console.WriteLine("Tie game!");
+             }
              
         }
 
@@ -93,17 +101,6 @@ namespace CSE210_01
                 return 0;
             }
         }
-
-       /* static bool IsADraw(List<string>board)
-        {
-            for (int i = 0; i < 10; i++)
-                if (board[i] != "x" & board[i] != "o")
-                {
-                    return false;
-                }
-                else 
-                {return true;} 
-        } */
 
         static void MakeMove(string player, List<string> board)  
         {
